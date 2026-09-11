@@ -4,9 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Sahana's Space</title>
-    <meta name="description" content="Professional portfolio showcasing full stack development projects and experience" />
+    <title>Sahana | AI/ML & Generative AI Engineer</title>
+    <meta name="description" content="Portfolio of Sahana - AI/ML Engineer specializing in Generative AI, RAG Pipelines, Amazon Bedrock, Large Language Models, and Backend APIs." />
+    <meta name="keywords" content="Sahana, AI Engineer, Machine Learning, Generative AI, RAG, Amazon Bedrock, FastAPI, Python, PyTorch, MongoDB" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      }
+      
       @keyframes fade-in-up {
         from {
           opacity: 0;
@@ -19,12 +27,19 @@
       }
       
       .animate-fade-in-up {
-        animation: fade-in-up 1s ease-out;
+        animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
       
       .line-clamp-3 {
         display: -webkit-box;
         -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .line-clamp-1 {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
@@ -34,8 +49,8 @@
       }
     </style>
   </head>
-  <body>
+  <body class="bg-white text-gray-900 antialiased selection:bg-blue-600 selection:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
-</html>
+</html>

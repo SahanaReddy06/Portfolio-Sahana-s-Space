@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Send, Github, Linkedin, Twitter, Mail, MessageCircle, Briefcase } from 'lucide-react';
+import { Send, Github, Linkedin, Mail, MessageCircle, Briefcase, Phone, Sparkles } from 'lucide-react';
 import { personalInfo, socialLinks } from '../data/portfolio';
 
 const iconMap = {
   Github,
   Linkedin,
-  Twitter,
   Mail,
-  MessageCircle
+  MessageCircle,
+  Phone
 };
 
 const Contact = () => {
@@ -16,12 +16,12 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 5000);
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -41,109 +41,139 @@ const Contact = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities and interesting projects.
-            Let's connect and see how we can work together!
+            Looking for opportunities to apply AI, GenAI, and software engineering skills to solve impactful real-world challenges.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Contact Form */}
-          <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
-                  placeholder="Your Name"
-                />
+          <div className="bg-slate-50/70 p-8 rounded-2xl border border-slate-100 shadow-sm">
+            <h3 className="text-xl font-bold text-gray-900 mb-6">Send a Direct Message</h3>
+            
+            {submitted ? (
+              <div className="p-6 bg-green-50 border border-green-200 rounded-xl text-center text-green-800 font-medium">
+                Thank you! Your message has been sent. I'll get back to you shortly.
               </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300 resize-none"
-                  placeholder="Your message..."
-                />
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-              >
-                <Send size={20} />
-                Send Message
-              </button>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1.5">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                    placeholder="e.g. John Doe"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1.5">
+                    Your Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
+                    placeholder="john@example.com"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-1.5">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all resize-none"
+                    placeholder="Discuss an opportunity, project, or collaboration..."
+                  />
+                </div>
+                
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-8 py-3.5 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
+                >
+                  <Send size={18} />
+                  <span>Send Message</span>
+                </button>
+              </form>
+            )}
           </div>
 
           {/* Contact Info & Social Links */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                Let's Connect
+          <div className="space-y-6">
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Direct Contact Channels
               </h3>
               
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-all duration-300"
+                  className="flex items-center gap-3.5 p-3.5 bg-slate-50 hover:bg-blue-50 text-gray-800 hover:text-blue-700 rounded-xl transition-all border border-slate-100"
                 >
-                  <Mail size={24} />
-                  <span className="font-medium">{personalInfo.email}</span>
+                  <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-500 font-medium">Email Address</div>
+                    <div className="text-sm font-semibold">{personalInfo.email}</div>
+                  </div>
                 </a>
 
                 <a
-                  href={`https://wa.me/${personalInfo.phone.replace(/\D/g, '')}`}
+                  href={`tel:${personalInfo.phone.replace(/[^0-9+]/g, '')}`}
+                  className="flex items-center gap-3.5 p-3.5 bg-slate-50 hover:bg-blue-50 text-gray-800 hover:text-blue-700 rounded-xl transition-all border border-slate-100"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0">
+                    <Phone size={20} />
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-500 font-medium">Phone Number</div>
+                    <div className="text-sm font-semibold">{personalInfo.phone}</div>
+                  </div>
+                </a>
+
+                <a
+                  href={`https://wa.me/918867037662`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-green-50 hover:text-green-600 transition-all duration-300"
+                  className="flex items-center gap-3.5 p-3.5 bg-slate-50 hover:bg-green-50 text-gray-800 hover:text-green-700 rounded-xl transition-all border border-slate-100"
                 >
-                  <MessageCircle size={24} />
-                  <span className="font-medium">Contact me on WhatsApp</span>
+                  <div className="w-10 h-10 rounded-lg bg-green-100 text-green-600 flex items-center justify-center flex-shrink-0">
+                    <MessageCircle size={20} />
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-500 font-medium">WhatsApp</div>
+                    <div className="text-sm font-semibold">+91 8867037662</div>
+                  </div>
                 </a>
               </div>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                Follow Me
+              <h4 className="text-sm font-bold text-gray-800 uppercase tracking-wider mb-3">
+                Connect on Professional Networks
               </h4>
               
-              <div className="flex gap-4">
+              <div className="flex gap-3">
                 {socialLinks.map((link) => {
-                  const IconComponent = iconMap[link.icon as keyof typeof iconMap];
+                  const IconComponent = iconMap[link.icon as keyof typeof iconMap] || Github;
                   
                   return (
                     <a
@@ -151,40 +181,39 @@ const Contact = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-110"
+                      className="px-4 py-2.5 bg-slate-50 border border-slate-200 text-slate-700 hover:bg-blue-600 hover:border-blue-600 hover:text-white rounded-xl flex items-center gap-2 text-xs font-semibold transition-all shadow-xs"
                     >
-                      <IconComponent size={20} />
+                      <IconComponent size={16} />
+                      <span>{link.name}</span>
                     </a>
                   );
                 })}
               </div>
             </div>
-
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6">
-              <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                Quick Response
-              </h4>
-              <p className="text-gray-600">
-                I typically respond to messages within 24 hours. Looking forward to hearing from you!
-              </p>
-            </div>
           </div>
         </div>
 
-        {/* Open to Work - Highlighted Section at the End */}
+        {/* Open to Work - Highlighted Section */}
         <div className="mt-16">
-          <div className="bg-gradient-to-br from-green-400 via-blue-500 to-purple-600 rounded-2xl p-8 text-white shadow-2xl transform hover:scale-105 transition-all duration-300">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Briefcase size={32} className="text-white" />
-                <h3 className="text-2xl font-bold">
-                  Open to Work
-                </h3>
+          <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 rounded-3xl p-8 md:p-10 text-white shadow-xl">
+            <div className="text-center max-w-3xl mx-auto">
+              <div className="inline-flex items-center justify-center gap-2 px-4 py-1.5 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+                <Sparkles size={14} className="text-yellow-300" />
+                <span>Actively Seeking Roles</span>
               </div>
-              <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
-                Currently seeking internships and job opportunities in AI/ML, Full Stack Development, and Data Science. 
-                Let's discuss how I can contribute to your team and bring innovative solutions to your projects!
+              <h3 className="text-2xl md:text-3xl font-extrabold mb-3">
+                Open for Opportunities
+              </h3>
+              <p className="text-base text-blue-100 leading-relaxed mb-6">
+                Open for full-time and trainee opportunities in <strong>AI/ML Engineering, Generative AI & RAG Development, Backend Engineering (Python/FastAPI)</strong>, and <strong>Data Analytics</strong>.
               </p>
+              <a
+                href={`mailto:${personalInfo.email}?subject=Opportunity%20Discussion`}
+                className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-700 font-bold text-sm rounded-xl hover:bg-blue-50 transition-all shadow-lg hover:scale-105"
+              >
+                <Briefcase size={18} />
+                <span>Discuss Opportunities</span>
+              </a>
             </div>
           </div>
         </div>
@@ -193,4 +222,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contact;

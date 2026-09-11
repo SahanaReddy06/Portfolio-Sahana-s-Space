@@ -1,134 +1,115 @@
 import React from 'react';
-import { Brain, Eye, MessageSquare, BarChart3, Cpu, Database, Globe, Zap, Layers, Users, Trophy } from 'lucide-react';
+import { BrainCircuit, Layers, Eye, Cpu, Database, Server, BarChart3, Cloud } from 'lucide-react';
 
 const TechnicalInterests = () => {
   const interests = [
     {
       id: "1",
-      title: "Artificial Intelligence",
-      description: "Exploring advanced AI algorithms, neural networks, and their applications in solving real-world problems.",
-      icon: "Brain",
-      color: "from-purple-500 to-pink-500",
-      topics: ["Neural Networks", "Reinforcement Learning", "AI Ethics", "AGI Research"]
+      title: "Generative AI & Agentic AI",
+      description: "Developing autonomous AI agents, LLM applications with Amazon Bedrock, and advanced prompt engineering frameworks.",
+      icon: "BrainCircuit",
+      color: "from-blue-600 to-indigo-600",
+      topics: ["Agentic AI", "Amazon Bedrock", "Strands Agents", "Prompt Engineering"]
     },
     {
       id: "2",
-      title: "Machine Learning",
-      description: "Building predictive models and algorithms that learn from data to make intelligent decisions and predictions.",
-      icon: "BarChart3",
-      color: "from-green-500 to-emerald-500",
-      topics: ["Supervised Learning", "Unsupervised Learning", "Feature Engineering", "Model Optimization"]
+      title: "RAG & Vector Search",
+      description: "Architecting end-to-end Retrieval-Augmented Generation pipelines with document chunking, semantic embeddings, and vector databases.",
+      icon: "Layers",
+      color: "from-purple-600 to-pink-600",
+      topics: ["RAG Pipelines", "Semantic Search", "Document Chunking", "Embeddings"]
     },
     {
       id: "3",
-      title: "Computer Vision",
-      description: "Developing systems that can interpret and understand visual information from the world around us.",
+      title: "OCR & Document AI",
+      description: "Extracting structured data from unstructured enterprise documents with page-level intelligence and multi-modal models.",
       icon: "Eye",
-      color: "from-blue-500 to-cyan-500",
-      topics: ["Image Processing", "Object Detection", "Face Recognition", "Medical Imaging"]
+      color: "from-emerald-500 to-teal-600",
+      topics: ["OCR Extraction", "Document Processing", "Structured Data", "Information Retrieval"]
     },
     {
       id: "4",
-      title: "Natural Language Processing",
-      description: "Building systems that can understand, interpret, and generate human language in a valuable way.",
-      icon: "MessageSquare",
-      color: "from-green-500 to-teal-500",
-      topics: ["Text Analysis", "Sentiment Analysis", "Language Models", "Chatbots"]
+      title: "Deep Learning & GANs",
+      description: "Training neural architectures, generative adversarial networks (CycleGAN), and image-to-image translation models with PyTorch.",
+      icon: "Cpu",
+      color: "from-amber-500 to-orange-600",
+      topics: ["CycleGAN", "PyTorch", "Image Translation", "Model Inference"]
     },
     {
       id: "5",
-      title: "Data Science & Analytics",
-      description: "Extracting insights from complex datasets using statistical methods and machine learning.",
-      icon: "BarChart3",
-      color: "from-orange-500 to-red-500",
-      topics: ["Statistical Analysis", "Data Visualization", "Predictive Modeling", "Big Data"]
+      title: "REST APIs & Backend",
+      description: "Building scalable backend services and high-throughput RESTful APIs using FastAPI, Swagger UI, and MongoDB.",
+      icon: "Server",
+      color: "from-cyan-500 to-blue-600",
+      topics: ["FastAPI", "MongoDB", "Swagger UI", "REST APIs"]
     },
     {
       id: "6",
-      title: "Deep Learning",
-      description: "Implementing and optimizing deep neural networks for complex pattern recognition tasks.",
-      icon: "Layers",
-      color: "from-indigo-500 to-purple-500",
-      topics: ["CNNs", "RNNs", "GANs", "Transformers"]
-    },
-    {
-      id: "7",
-      title: "Web Technologies",
-      description: "Building modern, responsive web applications using cutting-edge frameworks and tools.",
-      icon: "Globe",
-      color: "from-cyan-500 to-blue-500",
-      topics: ["React", "FastAPI", "MongoDB", "Full-Stack Development"]
-    },
-    {
-      id: "8",
-      title: "Workshops & Hackathons",
-      description: "Participating in collaborative coding events and technical workshops to enhance skills and network.",
-      icon: "Users",
-      color: "from-pink-500 to-rose-500",
-      topics: ["Team Collaboration", "Problem Solving", "Innovation", "Networking"]
+      title: "Data Analytics & BI",
+      description: "Transforming raw data into actionable intelligence with SQL, Pandas, NumPy, and executive PowerBI dashboards.",
+      icon: "BarChart3",
+      color: "from-violet-500 to-purple-700",
+      topics: ["PowerBI", "SQL Queries", "Pandas / NumPy", "Data Cleaning"]
     }
   ];
 
   const iconMap = {
-    Brain,
+    BrainCircuit,
+    Layers,
     Eye,
-    MessageSquare,
-    BarChart3,
     Cpu,
     Database,
-    Globe,
-    Zap,
-    Layers,
-    Users,
-    Trophy
+    Server,
+    BarChart3,
+    Cloud
   };
 
   return (
-    <section id="technical-interests" className="py-16 bg-gray-50">
+    <section id="technical-interests" className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Technical Interests
+            Technical Interests & Specializations
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Areas of technology that fascinate me and drive my continuous learning journey
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-4"></div>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Key focus areas driving my continuous exploration in Artificial Intelligence, Software Engineering, and Data Science
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {interests.map((interest, index) => {
-            const IconComponent = iconMap[interest.icon as keyof typeof iconMap];
+            const IconComponent = iconMap[interest.icon as keyof typeof iconMap] || BrainCircuit;
             
             return (
               <div
                 key={interest.id}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 group cursor-pointer"
+                className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between group"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="text-center mb-4">
-                  <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${interest.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <IconComponent size={28} className="text-white" />
+                <div>
+                  <div className={`w-14 h-14 mb-5 bg-gradient-to-br ${interest.color} rounded-xl flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                    <IconComponent size={26} />
                   </div>
                   
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                     {interest.title}
                   </h3>
                   
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  <p className="text-gray-600 text-sm mb-6 leading-relaxed">
                     {interest.description}
                   </p>
                 </div>
 
-                <div className="space-y-2">
-                  <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                    Key Areas
+                <div>
+                  <h4 className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">
+                    Key Topics
                   </h4>
-                  <div className="flex flex-wrap gap-1">
+                  <div className="flex flex-wrap gap-1.5">
                     {interest.topics.map((topic, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md hover:bg-blue-100 hover:text-blue-700 transition-colors"
+                        className="px-2.5 py-1 bg-slate-50 border border-slate-200/70 text-slate-700 text-xs font-medium rounded-lg"
                       >
                         {topic}
                       </span>
@@ -139,15 +120,9 @@ const TechnicalInterests = () => {
             );
           })}
         </div>
-
-        <div className="mt-8 text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-4 text-white">
-            <h3 className="text-lg font-bold">Always Learning, Always Growing</h3>
-          </div>
-        </div>
       </div>
     </section>
   );
 };
 
-export default TechnicalInterests;
+export default TechnicalInterests;

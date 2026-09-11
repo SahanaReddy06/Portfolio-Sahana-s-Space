@@ -1,38 +1,8 @@
 import React from 'react';
 import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
+import { educationData } from '../data/portfolio';
 
 const Education = () => {
-  const educationData = [
-    {
-      id: "1",
-      degree: "Bachelor of Engineering in Artificial Intelligence and Machine Learning",
-      institution: "BNM Institute of Technology",
-      location: "Bangalore, India",
-      duration: "2022 - 2026",
-      grade: "CGPA: 9.04/10",
-      description: "Currently pursuing an undergraduate degree in AIML",
-      highlights: [
-        "Specializing in AI/ML technologies",
-        "Strong academic performance",
-        "Active in technical projects, hackathons and workshops"
-      ]
-    },
-    {
-      id: "2",
-      degree: "Higher Secondary Education (12th Grade)",
-      institution: "Nagarjuna College of Management Studies",
-      location: "Karnataka, India",
-      duration: "2020 - 2022",
-      grade: "Percentage: 94%",
-      description: "Completed with Science stream focusing on Physics, Chemistry, Mathematics, and Biology.",
-      highlights: [
-        "Science Stream: PCM with Biology",
-        "Strong foundation in Mathematics",
-        "Active in science exhibitions, Quiz and competitions"
-      ]
-    }
-  ];
-
   return (
     <section id="education" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,7 +12,7 @@ const Education = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            My academic journey in Artificial Intelligence and Machine Learning
+            My academic foundation and qualifications in Artificial Intelligence & Machine Learning
           </p>
         </div>
 
@@ -50,51 +20,51 @@ const Education = () => {
           {educationData.map((edu, index) => (
             <div
               key={edu.id}
-              className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="bg-gradient-to-br from-blue-50/70 to-indigo-50/70 border border-blue-100/80 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-3 gap-6 items-center">
                 <div className="md:col-span-2">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
                       <GraduationCap size={24} className="text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">
                         {edu.degree}
                       </h3>
-                      <h4 className="text-lg font-semibold text-blue-600 mb-1">
+                      <h4 className="text-lg font-semibold text-blue-600 mb-2">
                         {edu.institution}
                       </h4>
                       <div className="flex flex-wrap items-center gap-4 text-gray-600 text-sm">
-                        <div className="flex items-center gap-1">
-                          <MapPin size={16} />
+                        <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                          <MapPin size={15} />
                           <span>{edu.location}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Calendar size={16} />
+                        <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                          <Calendar size={15} />
                           <span>{edu.duration}</span>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Award size={16} />
-                          <span className="font-medium text-green-600">{edu.grade}</span>
+                        <div className="flex items-center gap-1.5 bg-green-50 border border-green-200 text-green-700 px-3 py-0.5 rounded-full text-xs font-semibold">
+                          <Award size={14} />
+                          <span>{edu.grade}</span>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  <p className="text-gray-700 mb-4">
+                  <p className="text-gray-700 text-sm leading-relaxed">
                     {edu.description}
                   </p>
                 </div>
 
-                <div className="bg-white rounded-xl p-6 shadow-md">
-                  <h5 className="font-semibold text-gray-900 mb-3">Key Highlights</h5>
+                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                  <h5 className="font-semibold text-gray-900 mb-3 text-sm">Key Highlights</h5>
                   {edu.highlights && edu.highlights.length > 0 && (
-                    <ul className="space-y-2">
+                    <ul className="space-y-2.5">
                       {edu.highlights.map((highlight, idx) => (
-                        <li key={idx} className="text-sm text-gray-600 flex items-start gap-2">
-                          <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <li key={idx} className="text-xs text-gray-600 flex items-start gap-2 leading-relaxed">
+                          <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-1.5 flex-shrink-0"></div>
                           <span>{highlight}</span>
                         </li>
                       ))}
@@ -110,4 +80,4 @@ const Education = () => {
   );
 };
 
-export default Education;
+export default Education;
